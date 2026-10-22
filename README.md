@@ -1,23 +1,65 @@
 # Elias Skora
 
-I build and operate self-hosted AI agent systems, and before that I spent three years carrying a quota. GTM engineering is where those two stop being separate jobs.
+I build software that makes automated systems accountable for their decisions.
 
-Most of what I have built runs privately, at least for now, which limits what a profile page can honestly show. What it can show is the part that is checkable.
+My work spans AI agents, shared memory, decision infrastructure, and the controls that keep people in charge of increasingly autonomous software. The common thread is simple: when a system makes a decision or takes an action, someone should be able to find out why, inspect what happened, and change what happens next.
 
-### Running
+I came to engineering through revenue and operations. Before building software, I worked in business development at Great Question, sold payroll and HR technology at Paychex, and managed operations for a nonprofit and restaurants. Different industries, same recurring problem: important context disappeared between decisions, systems, and the people responsible for the outcome.
 
-Talaria is a Python daemon on macOS: one agent core carrying shared memory, skills, trust rules across a CLI, Telegram, an installable web app, and four model bridges (Anthropic, OpenAI, Gemini, local Ollama). Every irreversible action passes a five-level trust gradient that ends in a hand-typed confirmation. Its MCP server answers at `mcp.eskora.co/mcp`, where identity is enforced at the ASGI seam, before any protocol traffic reaches the server. An unauthenticated request gets a 401. That is the check, if you want to make it.
+That experience shapes what I build.
 
-Unbelieve is a Next.js and Supabase app at `app.unbelieve.app`. An AI interview ladders down to a testable belief, and deterministic code, never the model, keeps score.
+### Flight Recorder
 
-### In the open
+*Decision history and replay for revenue systems*
 
-The one I build in public is [**flight-recorder**](https://github.com/e-skora/flight-recorder), an observability layer for automated revenue decisions. It preserves the evidence behind a prioritization call at the moment the call is made, so the same decision can be replayed months later against what was actually known at the time. The fields that fed it get overwritten in the months after. A preserved record does not. Python, FastAPI, SQLite, no JavaScript framework.
+[Live demo](https://flight-recorder.app/demo) · [Source code](https://github.com/e-skora/flight-recorder) · Python, FastAPI, SQLite
 
-It covers one decision class. The repository says which parts are not built.
+Sales software decides which accounts get attention, what triggers an outreach sequence, and what happens next. Flight Recorder preserves the evidence and rules behind those decisions.
 
-### The other half
+Teams can reconstruct a decision, see exactly what informed it, and test how different rules would have changed the outcome.
 
-I was a BDR at Great Question and then a mid-market account executive at Paychex. Roughly 500 outbound touches a week across Apollo, Orum, Sales Navigator, averaging 15 sales-qualified meetings a month against a target of 10, then 40 to 60 open opportunities at a time while self-sourcing 60 percent or more of the pipeline. The part I kept wanting more of was finding where the process leaked and fixing it. That is most of why the repositories exist.
+The public demo includes 241 sample accounts. Change the logic, replay the decisions, and see what changes.
 
-Portland, Oregon · Open to relocation · [es@eskora.co](mailto:es@eskora.co) · [eskora.co](https://eskora.co) · [LinkedIn](https://linkedin.com/in/eliassskora)
+### Aeverum
+
+*Shared memory across AI models*
+
+[aeverum.co](https://aeverum.co/)
+
+AI assistants are good at generating answers and remarkably bad at maintaining a consistent understanding of the person using them.
+
+Aeverum is a shared memory system designed to work across models and tools. It keeps track of where information came from, evaluates what deserves to be remembered, and provides a controlled way to correct or forget it.
+
+The goal is continuity without surrendering ownership of your own context.
+
+### Petasos
+
+*Safety controls for autonomous actions*
+
+AI agents can do more than answer questions. They can send messages, modify files, and make changes outside the conversation.
+
+Petasos is a control layer between an agent's proposed action and its execution. Explicit rules determine what can proceed, what needs human approval, and what must be blocked.
+
+Its focus is on enforcing those boundaries, recording decisions, and handling uncertainty when an action's outcome cannot be confirmed.
+
+### Talaria
+
+*Personal multi-model agent system*
+
+Talaria is the agent system I use in my own daily work.
+
+It coordinates work across Anthropic, OpenAI, Gemini, and local models, routes tasks between them, and provides fallback paths when a provider is unavailable.
+
+The more important part is what it doesn't do freely: irreversible actions require explicit confirmation.
+
+A public version is in development.
+
+### Consilience Operations House
+
+Flight Recorder, Aeverum, and Petasos are developed under [Consilience Operations House](https://consilienceops.com/), the software company I founded to build systems that are easier to inspect, govern, and trust.
+
+I'm particularly interested in agent infrastructure, applied AI, developer tools, and the places where software meets real operational responsibility.
+
+Portland, Oregon
+
+[Website](https://eskora.co/) · [LinkedIn](https://linkedin.com/in/eliassskora) · [Email](mailto:es@eskora.co)
