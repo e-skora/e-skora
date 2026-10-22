@@ -36,6 +36,8 @@ The goal is continuity without surrendering ownership of your own context.
 
 *Safety controls for autonomous actions*
 
+[petasos.io](https://petasos.io/)
+
 AI agents can do more than answer questions. They can send messages, modify files, and make changes outside the conversation.
 
 Petasos is a control layer between an agent's proposed action and its execution. Explicit rules determine what can proceed, what needs human approval, and what must be blocked.
